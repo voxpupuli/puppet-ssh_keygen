@@ -12,3 +12,9 @@ or if not using the default `/home/john`
     ssh_keygen { 'john':
       home => '/var/home'
     }
+
+the key comment can also be overriden with
+
+    ssh_keygen { 'john':
+      comment => 'john key'
+    }
