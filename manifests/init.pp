@@ -1,28 +1,30 @@
 # Define: ssh_keygen
 # Parameters:
 # $home
+# $filename
 # $comment
+# $type
+# $bits
 #
-define ssh_keygen(
-  $home=undef,
-  $comment=undef) {
+define ssh_keygen (
+  $home     = "/home/${name}",
+  $filename = undef,
+  $comment  = "${name}@${::fqdn}",
+  $type     = 'rsa',
+  $bits     = '2048',
+) {
 
   Exec { path => '/bin:/usr/bin' }
 
-  $home_real = $home ? {
-    undef => "/home/${name}",
-    default => $home,
-  }
-
-  $comment_real = $comment ? {
-    undef => "puppet generated key for ${name}@${::fqdn}",
-    default => $comment,
+  $filename_real = $filename ? {
+    undef   => "${home}/.ssh/id_${type}",
+    default => $filename,
   }
 
   exec { "ssh_keygen-${name}":
-    command => "ssh-keygen -f \"${home_real}/.ssh/id_rsa\" -N '' -C '${comment_real}'",
+    command => "ssh-keygen -t ${type} -b ${bits} -f \"${filename_real}\" -N '' -C '${comment}'",
     user    => $name,
-    creates => "${home_real}/.ssh/id_rsa",
+    creates => $filename_real,
   }
 
 }
