@@ -2,4 +2,12 @@
 pkg
 metadata.json
 .rvmrc
+.ruby-version
+.ruby-gemset
+.versions.conf
 spec/fixtures/
+
+# OS generated files #
+######################
+.DS_Store*
+Thumbs.db
