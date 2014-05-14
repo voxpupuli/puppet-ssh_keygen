@@ -1,5 +1,5 @@
 name    'maestrodev-ssh_keygen'
-version '1.2.0'
+version '1.2.1'
 source 'http://github.com/maestrodev/puppet-ssh_keygen.git'
 author 'maestrodev'
 license 'Apache License, Version 2.0'
