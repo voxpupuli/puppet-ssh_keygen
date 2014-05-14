@@ -9,20 +9,61 @@ describe 'ssh_keygen' do
     let(:params) { {} }
 
     it { should contain_exec('ssh_keygen-john').with(
-      :creates => '/home/john/.ssh/id_rsa',
-      :command => "ssh-keygen -f \"/home/john/.ssh/id_rsa\" -N '' -C 'puppet generated key for john@www.acme.com'") }
+      :command => "ssh-keygen -t rsa -b 2048 -f \"/home/john/.ssh/id_rsa\" -N '' -C 'john@www.acme.com'",
+      :user    => 'john',
+      :creates => '/home/john/.ssh/id_rsa'
+    ) }
   end
 
   context 'passing home parameter' do
     let(:params) { {:home => '/h/j'} }
 
-    it { should contain_exec('ssh_keygen-john').with_creates('/h/j/.ssh/id_rsa') }
+    it { should contain_exec('ssh_keygen-john').with(
+      :command => "ssh-keygen -t rsa -b 2048 -f \"/h/j/.ssh/id_rsa\" -N '' -C 'john@www.acme.com'",
+      :user    => 'john',
+      :creates => '/h/j/.ssh/id_rsa'
+    ) }
+  end
+
+  context 'passing filename parameter for host key' do
+    let(:title)  { 'root' }
+    let(:params) { {:filename => '/etc/ssh/ssh_host_rsa_key'} }
+
+    it { should contain_exec('ssh_keygen-root').with(
+      :command => "ssh-keygen -t rsa -b 2048 -f \"/etc/ssh/ssh_host_rsa_key\" -N '' -C 'root@www.acme.com'",
+      :user    => 'root',
+      :creates => '/etc/ssh/ssh_host_rsa_key'
+    ) }
   end
 
   context 'passing comment parameter' do
     let(:params) { {:comment => 'my key'} }
 
-    it { should contain_exec('ssh_keygen-john').with_command("ssh-keygen -f \"/home/john/.ssh/id_rsa\" -N '' -C 'my key'") }
+    it { should contain_exec('ssh_keygen-john').with(
+      :command => "ssh-keygen -t rsa -b 2048 -f \"/home/john/.ssh/id_rsa\" -N '' -C 'my key'",
+      :user    => 'john',
+      :creates => '/home/john/.ssh/id_rsa'
+    ) }
+  end
+
+  context 'passing type parameter' do
+    let(:params) { {:type => 'dsa'} }
+
+    it { should contain_exec('ssh_keygen-john').with(
+      :command => "ssh-keygen -t dsa -b 2048 -f \"/home/john/.ssh/id_dsa\" -N '' -C 'john@www.acme.com'",
+      :user    => 'john',
+      :creates => '/home/john/.ssh/id_dsa'
+    ) }
+  end
+
+  context 'passing bits parameter' do
+    let(:params) { {:bits => '4096'} }
+
+    it { should contain_exec('ssh_keygen-john').with(
+      :command => "ssh-keygen -t rsa -b 4096 -f \"/home/john/.ssh/id_rsa\" -N '' -C 'john@www.acme.com'",
+      :user    => 'john',
+      :creates => '/home/john/.ssh/id_rsa'
+    ) }
   end
 
 end
