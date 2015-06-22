@@ -8,6 +8,7 @@
 #
 define ssh_keygen (
   $home     = "/home/${name}",
+  $user     = $name,
   $filename = undef,
   $comment  = "${name}@${::fqdn}",
   $type     = 'rsa',
@@ -23,7 +24,7 @@ define ssh_keygen (
 
   exec { "ssh_keygen-${name}":
     command => "ssh-keygen -t ${type} -b ${bits} -f \"${filename_real}\" -N '' -C '${comment}'",
-    user    => $name,
+    user    => $user,
     creates => $filename_real,
   }
 
