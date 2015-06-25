@@ -10,7 +10,7 @@ define ssh_keygen (
   $home     = undef,
   $user     = undef,
   $filename = undef,
-  $comment  = "${name}@${::fqdn}",
+  $comment  = undef,
   $type     = 'rsa',
   $bits     = '2048',
 ) {
@@ -32,8 +32,13 @@ define ssh_keygen (
     default => $filename,
   }
 
+  $comment_real = $comment ? {
+    undef   => "${user_real}@${::fqdn}",
+    default => $comment,
+  }
+
   exec { "ssh_keygen-${name}":
-    command => "ssh-keygen -t ${type} -b ${bits} -f \"${filename_real}\" -N '' -C '${comment}'",
+    command => "ssh-keygen -t ${type} -b ${bits} -f \"${filename_real}\" -N '' -C '${comment_real}'",
     user    => $user_real,
     creates => $filename_real,
   }
