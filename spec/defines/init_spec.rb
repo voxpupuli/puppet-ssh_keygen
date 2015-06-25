@@ -66,4 +66,14 @@ describe 'ssh_keygen' do
     ) }
   end
 
+  context 'passing user parameter' do
+    let(:params) { {:user => 'other'} }
+
+    it { should contain_exec('ssh_keygen-john').with(
+      :command => "ssh-keygen -t rsa -b 2048 -f \"/home/other/.ssh/id_rsa\" -N '' -C 'other@www.acme.com'",
+      :user    => 'other',
+      :creates => '/home/other/.ssh/id_rsa'
+    ) }
+  end
+
 end
