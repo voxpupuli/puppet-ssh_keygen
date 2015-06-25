@@ -7,8 +7,8 @@
 # $bits
 #
 define ssh_keygen (
-  $home     = "/home/${name}",
-  $user     = $name,
+  $home     = undef,
+  $user     = undef,
   $filename = undef,
   $comment  = "${name}@${::fqdn}",
   $type     = 'rsa',
@@ -17,14 +17,24 @@ define ssh_keygen (
 
   Exec { path => '/bin:/usr/bin' }
 
+  $user_real = $user ? {
+    undef   => $name,
+    default => $user,
+  }
+
+  $home_real = $home ? {
+    undef   => "/home/${user_real}",
+    default => $home,
+  }
+
   $filename_real = $filename ? {
-    undef   => "${home}/.ssh/id_${type}",
+    undef   => "${home_real}/.ssh/id_${type}",
     default => $filename,
   }
 
   exec { "ssh_keygen-${name}":
     command => "ssh-keygen -t ${type} -b ${bits} -f \"${filename_real}\" -N '' -C '${comment}'",
-    user    => $user,
+    user    => $user_real,
     creates => $filename_real,
   }
 
