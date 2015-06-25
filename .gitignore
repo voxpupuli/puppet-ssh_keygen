@@ -1,6 +1,5 @@
 .project
 pkg
-metadata.json
 .rvmrc
 .ruby-version
 .ruby-gemset
