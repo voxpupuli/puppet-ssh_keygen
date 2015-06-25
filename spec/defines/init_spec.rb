@@ -70,9 +70,9 @@ describe 'ssh_keygen' do
     let(:params) { {:user => 'other'} }
 
     it { should contain_exec('ssh_keygen-john').with(
-      :command => "ssh-keygen -t rsa -b 2048 -f \"/home/john/.ssh/id_rsa\" -N '' -C 'john@www.acme.com'",
+      :command => "ssh-keygen -t rsa -b 2048 -f \"/home/other/.ssh/id_rsa\" -N '' -C 'john@www.acme.com'",
       :user    => 'other',
-      :creates => '/home/john/.ssh/id_rsa'
+      :creates => '/home/other/.ssh/id_rsa'
     ) }
   end
 
