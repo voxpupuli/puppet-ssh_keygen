@@ -1,10 +1,17 @@
+# This file is managed centrally by modulesync
+#   https://github.com/maestrodev/puppet-modulesync
+
 source 'https://rubygems.org'
 
-group :rake do
-  gem 'puppet', '>=2.7.20'
-  gem 'rspec-puppet', '>=0.1.3'
-  gem 'rake', '>=0.9.2.2'
-  gem 'puppet-lint', '>=0.1.12'
-  gem 'puppetlabs_spec_helper'
-  gem 'puppet-blacksmith'
-end
+gem 'puppet', ENV['PUPPET_VERSION'] || '>= 2.7', :require => false
+
+gem 'rake', :require => false
+gem 'rspec-puppet', '>= 2.1.0', :require => false
+gem 'puppetlabs_spec_helper', '>= 0.8.0', :require => false
+gem 'puppet-lint', '>= 1.1.0', :require => false
+gem 'simplecov', :require => false
+gem 'puppet-blacksmith', '>= 3.3.1', :require => false
+gem 'librarian-puppet', '>= 2.0.0', :require => false
+gem 'beaker-rspec', '>= 3.0.0', :require => false
+
+# vim:ft=ruby
