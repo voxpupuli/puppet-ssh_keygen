@@ -1,6 +1,6 @@
 {
   "name": "maestrodev-ssh_keygen",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "source": "http://github.com/maestrodev/puppet-ssh_keygen.git",
   "author": "maestrodev",
   "license": "Apache License, Version 2.0",
@@ -8,5 +8,6 @@
   "description": "Generate ssh keys for any user using ssh_keygen, that needs to be present before using the module",
   "project_page": "http://github.com/maestrodev/puppet-ssh_keygen",
   "dependencies": [
+
   ]
 }
