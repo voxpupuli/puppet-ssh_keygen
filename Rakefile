@@ -29,4 +29,5 @@ Blacksmith::RakeTask.new do |t|
   t.build = false # do not build the module nor push it to the Forge, just do the tagging [:clean, :tag, :bump_commit]
 end
 
+Rake::Task[:default].prerequisites.clear
 task :default => [:clean, :validate, :lint, :spec]
