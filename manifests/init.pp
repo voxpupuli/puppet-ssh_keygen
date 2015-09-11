@@ -31,7 +31,10 @@ define ssh_keygen (
   }
 
   $home_real = $home ? {
-    undef   => "/home/${user_real}",
+    undef   => $user_real ? {
+      'root'  => "/${user_real}",
+      default => "/home/${user_real}",
+    },
     default => $home,
   }
 

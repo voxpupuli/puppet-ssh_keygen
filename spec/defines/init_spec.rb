@@ -15,13 +15,23 @@ describe 'ssh_keygen' do
     ) }
   end
 
-  context 'passing user parameter' do
+  context 'passing user other parameter' do
     let(:params) { {:user => 'other'} }
 
     it { should contain_exec('ssh_keygen-john').with(
       :command => "ssh-keygen -t rsa -f '/home/other/.ssh/id_rsa' -N ''",
       :user    => 'other',
       :creates => '/home/other/.ssh/id_rsa'
+    ) }
+  end
+
+  context 'passing user root parameter' do
+    let(:params) { {:user => 'root'} }
+
+    it { should contain_exec('ssh_keygen-john').with(
+      :command => "ssh-keygen -t rsa -f '/root/.ssh/id_rsa' -N ''",
+      :user    => 'root',
+      :creates => '/root/.ssh/id_rsa'
     ) }
   end
 
