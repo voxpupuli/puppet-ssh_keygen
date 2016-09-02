@@ -8,6 +8,6 @@
   "description": "Generate ssh keys for any user using ssh_keygen, that needs to be present before using the module",
   "project_page": "http://github.com/maestrodev/puppet-ssh_keygen",
   "dependencies": [
-
+    {"name": "puppetlabs/stdlib", "version_requirement": ">= 4.1.0 < 5.0.0"}
   ]
 }
