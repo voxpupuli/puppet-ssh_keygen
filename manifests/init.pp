@@ -9,13 +9,14 @@
 # $options
 #
 define ssh_keygen (
-  $user     = undef,
-  $type     = undef,
-  $bits     = undef,
-  $home     = undef,
-  $filename = undef,
-  $comment  = undef,
-  $options  = undef,
+  $user       = undef,
+  $type       = undef,
+  $bits       = undef,
+  $home       = undef,
+  $filename   = undef,
+  $comment    = undef,
+  $options    = undef,
+  $passphrase = undef,
 ) {
 
   Exec { path => '/bin:/usr/bin' }
@@ -46,7 +47,13 @@ define ssh_keygen (
   $type_opt = " -t ${type_real}"
   if $bits { $bits_opt = " -b ${bits}" }
   $filename_opt = " -f '${filename_real}'"
-  $n_passphrase_opt = " -N ''"
+
+  if $passphrase {
+    $n_passphrase_opt = " -N '${passphrase}'"
+  } else {
+    $n_passphrase_opt = " -N ''"
+  }
+
   if $comment { $comment_opt = " -C '${comment}'" }
   $options_opt = $options ? {
     undef   => undef,
