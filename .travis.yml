@@ -3,7 +3,7 @@
 #   https://github.com/maestrodev/puppet-modulesync
 
 before_install:
-  - rm -f Gemfile.lock
+  # - rm -f Gemfile.lock
 
 rvm:
   - "2.0"
