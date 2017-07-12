@@ -1,7 +1,10 @@
 puppet-ssh_keygen
 =================
 
-Generation of ssh keys with ssh-keygen
+# THIS MODULE HAS BEEN MOVED TO VOXPUPULI
+This module has been donated to Vox Pupuli and can be found at https://github.com/voxpupuli/puppet-ssh-keygen.
+
+# Generation of ssh keys with ssh-keygen
 
 Generate ssh keys for any user using ssh_keygen, that needs exist before using the module
 ```puppet
