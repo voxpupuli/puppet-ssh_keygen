@@ -2,7 +2,7 @@ puppet-ssh_keygen
 =================
 
 # THIS MODULE HAS BEEN MOVED TO VOXPUPULI
-This module has been donated to Vox Pupuli and can be found at https://github.com/voxpupuli/puppet-ssh-keygen.
+This module has been donated to Vox Pupuli and can be found at https://github.com/voxpupuli/puppet-ssh_keygen.
 
 # Generation of ssh keys with ssh-keygen
 
