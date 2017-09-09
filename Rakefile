@@ -1,33 +1,45 @@
-# This file is managed centrally by modulesync
-#   https://github.com/maestrodev/puppet-modulesync
-
-require 'rake/clean'
 require 'puppetlabs_spec_helper/rake_tasks'
-require 'puppet-lint/tasks/puppet-lint'
 require 'puppet_blacksmith/rake_tasks'
+require 'voxpupuli/release/rake_tasks'
+require 'puppet-strings/tasks'
 
-CLEAN.include('spec/fixtures/manifests/', 'spec/fixtures/modules/', 'doc', 'pkg')
-CLOBBER.include('.tmp', '.librarian')
+PuppetLint.configuration.log_format = '%{path}:%{line}:%{check}:%{KIND}:%{message}'
+PuppetLint.configuration.fail_on_warnings = true
+PuppetLint.configuration.send('relative')
+PuppetLint.configuration.send('disable_140chars')
+PuppetLint.configuration.send('disable_class_inherits_from_params_class')
+PuppetLint.configuration.send('disable_documentation')
+PuppetLint.configuration.send('disable_single_quote_string_with_variables')
 
-ENV['STRICT_VARIABLES']='yes' unless Gem::Version.new(Puppet.version) < Gem::Version.new("3.5.0")
+exclude_paths = %w(
+  pkg/**/*
+  vendor/**/*
+  .vendor/**/*
+  spec/**/*
+)
+PuppetLint.configuration.ignore_paths = exclude_paths
+PuppetSyntax.exclude_paths = exclude_paths
 
-task :librarian_spec_prep do
-  sh "librarian-puppet install --path=spec/fixtures/modules/"
+desc 'Run acceptance tests'
+RSpec::Core::RakeTask.new(:acceptance) do |t|
+  t.pattern = 'spec/acceptance'
 end
-task :spec_prep => :librarian_spec_prep
 
-Rake::Task[:lint].clear # workaround https://github.com/rodjek/puppet-lint/issues/331
-PuppetLint.configuration.relative = true # https://github.com/rodjek/puppet-lint/pull/334
-PuppetLint::RakeTask.new :lint do |config|
-  config.pattern = 'manifests/**/*.pp'
-  config.disable_checks = ["80chars", "class_inherits_from_params_class"]
-  config.fail_on_warnings = true
-  # config.relative = true
+desc 'Run tests metadata_lint, release_checks'
+task test: [
+  :metadata_lint,
+  :release_checks,
+]
+
+begin
+  require 'github_changelog_generator/task'
+  GitHubChangelogGenerator::RakeTask.new :changelog do |config|
+    version = (Blacksmith::Modulefile.new).version
+    config.future_release = "v#{version}" if version =~ /^\d+\.\d+.\d+$/
+    config.header = "# Change log\n\nAll notable changes to this project will be documented in this file.\nEach new release typically also includes the latest modulesync defaults.\nThese should not impact the functionality of the module."
+    config.exclude_labels = %w{duplicate question invalid wontfix wont-fix modulesync}
+    config.user = 'voxpupuli'
+  end
+rescue LoadError
 end
-
-Blacksmith::RakeTask.new do |t|
-  t.build = false # do not build the module nor push it to the Forge, just do the tagging [:clean, :tag, :bump_commit]
-end
-
-Rake::Task[:default].prerequisites.clear
-task :default => [:clean, :validate, :lint, :spec]
+# vim: syntax=ruby
