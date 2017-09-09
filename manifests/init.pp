@@ -44,10 +44,20 @@ define ssh_keygen (
   }
 
   $type_opt = " -t ${type_real}"
-  if $bits { $bits_opt = " -b ${bits}" }
+
+  $bits_opt = $bits ? {
+    undef   => undef,
+    default => " -b ${bits}"
+  }
+
   $filename_opt = " -f '${filename_real}'"
   $n_passphrase_opt = " -N ''"
-  if $comment { $comment_opt = " -C '${comment}'" }
+
+  $comment_opt = $comment ? {
+    undef   => undef,
+    default => " -C '${comment}'",
+  }
+
   $options_opt = $options ? {
     undef   => undef,
     default => " ${options}",
