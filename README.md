@@ -44,7 +44,7 @@ ssh_keygen { 'john':
 specify the bit length
 ```puppet
 ssh_keygen { 'john':
-  bits => '4096'
+  bits => 4096
 }
 ```
 
