@@ -53,7 +53,7 @@ describe 'ssh_keygen' do
   end
 
   context 'passing bits parameter' do
-    let(:params) { { bits: '4096' } }
+    let(:params) { { bits: 4096 } }
 
     it {
       is_expected.to contain_exec('ssh_keygen-john').with(
