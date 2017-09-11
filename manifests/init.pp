@@ -22,7 +22,7 @@
 #
 # @example specify the bit length
 #  ssh_keygen { 'john':
-#    bits => '4096'
+#    bits => 4096
 #  }
 #
 # @example Generate new host key
