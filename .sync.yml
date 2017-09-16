@@ -1,2 +1,2 @@
 .travis.yml:
-  forge_password: "ZiCBVZ7uHSaUcNQZiayFta9Iy1N0/lzVDMIL7jLzGyIxig4eX6vMEaEbmLCDP0XjnUSDtxh4G6C43BKMlvFtpl+fs41ZSC/b/FRCsYADkl7algl3+vzOSlC+x0R303/KisizETnGZaqvgUDRtyogZiitYumxuJ/bkQcDgJ+3W/8="
+  secure: "ZiCBVZ7uHSaUcNQZiayFta9Iy1N0/lzVDMIL7jLzGyIxig4eX6vMEaEbmLCDP0XjnUSDtxh4G6C43BKMlvFtpl+fs41ZSC/b/FRCsYADkl7algl3+vzOSlC+x0R303/KisizETnGZaqvgUDRtyogZiitYumxuJ/bkQcDgJ+3W/8="
