@@ -1,8 +1,16 @@
-# Change log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
-These should not impact the functionality of the module.
+These should not affect the functionality of the module.
+
+## [v2.0.1](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v2.0.1) (2017-10-10)
+[Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v2.0.0...v2.0.1)
+
+**Merged pull requests:**
+
+- Update .sync.yml again with correct name for parameter [\#24](https://github.com/voxpupuli/puppet-ssh_keygen/pull/24) ([wyardley](https://github.com/wyardley))
+- switch string to int in example [\#22](https://github.com/voxpupuli/puppet-ssh_keygen/pull/22) ([wyardley](https://github.com/wyardley))
 
 ## [v2.0.0](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v2.0.0) (2017-09-09)
 [Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v1.3.1...v2.0.0)
@@ -23,6 +31,7 @@ These should not impact the functionality of the module.
 
 **Merged pull requests:**
 
+- Updates for 2.0.0 release [\#21](https://github.com/voxpupuli/puppet-ssh_keygen/pull/21) ([wyardley](https://github.com/wyardley))
 - Additional fixes to README [\#18](https://github.com/voxpupuli/puppet-ssh_keygen/pull/18) ([wyardley](https://github.com/wyardley))
 - rubocop -a fixes [\#15](https://github.com/voxpupuli/puppet-ssh_keygen/pull/15) ([wyardley](https://github.com/wyardley))
 - License readme [\#14](https://github.com/voxpupuli/puppet-ssh_keygen/pull/14) ([wyardley](https://github.com/wyardley))
