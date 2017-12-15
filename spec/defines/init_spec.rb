@@ -9,7 +9,7 @@ describe 'ssh_keygen' do
 
     it {
       is_expected.to contain_exec('ssh_keygen-john').with(
-        command: "ssh-keygen -t rsa -f '/home/john/.ssh/id_rsa' -N ''",
+        command: "ssh-keygen -t rsa -f /home/john/.ssh/id_rsa -N ''",
         user: 'john',
         creates: '/home/john/.ssh/id_rsa'
       )
@@ -21,9 +21,21 @@ describe 'ssh_keygen' do
 
     it {
       is_expected.to contain_exec('ssh_keygen-john').with(
-        command: "ssh-keygen -t rsa -f '/home/other/.ssh/id_rsa' -N ''",
+        command: "ssh-keygen -t rsa -f /home/other/.ssh/id_rsa -N ''",
         user: 'other',
         creates: '/home/other/.ssh/id_rsa'
+      )
+    }
+  end
+
+  context 'illegal params will be escaped' do
+    let(:params) { { options: [';', 'rm', '-rf', '/'] } }
+
+    it {
+      is_expected.to contain_exec('ssh_keygen-john').with(
+        command: "ssh-keygen -t rsa -f /home/john/.ssh/id_rsa -N '' \\; rm -rf /",
+        user: 'john',
+        creates: '/home/john/.ssh/id_rsa'
       )
     }
   end
@@ -33,7 +45,7 @@ describe 'ssh_keygen' do
 
     it {
       is_expected.to contain_exec('ssh_keygen-john').with(
-        command: "ssh-keygen -t rsa -f '/root/.ssh/id_rsa' -N ''",
+        command: "ssh-keygen -t rsa -f /root/.ssh/id_rsa -N ''",
         user: 'root',
         creates: '/root/.ssh/id_rsa'
       )
@@ -45,7 +57,7 @@ describe 'ssh_keygen' do
 
     it {
       is_expected.to contain_exec('ssh_keygen-john').with(
-        command: "ssh-keygen -t dsa -f '/home/john/.ssh/id_dsa' -N ''",
+        command: "ssh-keygen -t dsa -f /home/john/.ssh/id_dsa -N ''",
         user: 'john',
         creates: '/home/john/.ssh/id_dsa'
       )
@@ -57,7 +69,7 @@ describe 'ssh_keygen' do
 
     it {
       is_expected.to contain_exec('ssh_keygen-john').with(
-        command: "ssh-keygen -t rsa -b 4096 -f '/home/john/.ssh/id_rsa' -N ''",
+        command: "ssh-keygen -t rsa -b 4096 -f /home/john/.ssh/id_rsa -N ''",
         user: 'john',
         creates: '/home/john/.ssh/id_rsa'
       )
@@ -69,7 +81,7 @@ describe 'ssh_keygen' do
 
     it {
       is_expected.to contain_exec('ssh_keygen-john').with(
-        command: "ssh-keygen -t rsa -f '/h/j/.ssh/id_rsa' -N ''",
+        command: "ssh-keygen -t rsa -f /h/j/.ssh/id_rsa -N ''",
         user: 'john',
         creates: '/h/j/.ssh/id_rsa'
       )
@@ -82,7 +94,7 @@ describe 'ssh_keygen' do
 
     it {
       is_expected.to contain_exec('ssh_keygen-root').with(
-        command: "ssh-keygen -t rsa -f '/etc/ssh/ssh_host_rsa_key' -N ''",
+        command: "ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''",
         user: 'root',
         creates: '/etc/ssh/ssh_host_rsa_key'
       )
@@ -94,7 +106,7 @@ describe 'ssh_keygen' do
 
     it {
       is_expected.to contain_exec('ssh_keygen-john').with(
-        command: "ssh-keygen -t rsa -f '/home/john/.ssh/id_rsa' -N '' -C 'my key'",
+        command: "ssh-keygen -t rsa -f /home/john/.ssh/id_rsa -N '' -C my\\ key",
         user: 'john',
         creates: '/home/john/.ssh/id_rsa'
       )
@@ -102,11 +114,11 @@ describe 'ssh_keygen' do
   end
 
   context 'passing options parameter' do
-    let(:params) { { options: '-q' } }
+    let(:params) { { options: ['-q'] } }
 
     it {
       is_expected.to contain_exec('ssh_keygen-john').with(
-        command: "ssh-keygen -t rsa -f '/home/john/.ssh/id_rsa' -N '' -q",
+        command: "ssh-keygen -t rsa -f /home/john/.ssh/id_rsa -N '' -q",
         user: 'john',
         creates: '/home/john/.ssh/id_rsa'
       )
