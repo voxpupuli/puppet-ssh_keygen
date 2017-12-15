@@ -40,7 +40,7 @@
 #
 define ssh_keygen (
   Optional[String] $user     = undef,
-  Enum['rsa', 'dsa'] $type   = 'rsa',
+  Enum['rsa', 'dsa', 'ecdsa', 'ed25519', 'rsa1'] $type   = 'rsa',
   Optional[Integer] $bits    = undef,
   Optional[String] $home     = undef,
   Optional[String] $filename = undef,
