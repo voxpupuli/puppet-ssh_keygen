@@ -42,10 +42,10 @@ define ssh_keygen (
   Optional[String] $user     = undef,
   Enum['rsa', 'dsa', 'ecdsa', 'ed25519', 'rsa1'] $type   = 'rsa',
   Optional[Integer] $bits    = undef,
-  Optional[String] $home     = undef,
-  Optional[String] $filename = undef,
+  Optional[Stdlib::Absolutepath] $home     = undef,
+  Optional[Stdlib::Absolutepath] $filename = undef,
   Optional[String] $comment  = undef,
-  Optional[String] $options  = undef,
+  Optional[Array[String]] $options  = undef,
 ) {
 
   Exec { path => '/bin:/usr/bin' }
@@ -68,28 +68,38 @@ define ssh_keygen (
     default => $filename,
   }
 
-  $type_opt = " -t ${type}"
+  $type_opt = shell_join(['-t', $type])
 
   $bits_opt = $bits ? {
     undef   => undef,
-    default => " -b ${bits}"
+    default => shell_join(['-b', $bits])
   }
 
-  $filename_opt = " -f '${_filename}'"
-  $passphrase_opt = " -N ''"
+  $filename_opt = shell_join(['-f', $_filename])
+  $passphrase_opt = shell_join(['-N', ''])
 
   $comment_opt = $comment ? {
     undef   => undef,
-    default => " -C '${comment}'",
+    default => shell_join(['-C', $comment])
   }
 
   $options_opt = $options ? {
     undef   => undef,
-    default => " ${options}",
+    default => shell_join($options),
   }
 
+  $command = delete_undef_values([
+    'ssh-keygen',
+    $type_opt,
+    $bits_opt,
+    $filename_opt,
+    $passphrase_opt,
+    $comment_opt,
+    $options_opt,
+  ])
+
   exec { "ssh_keygen-${name}":
-    command => "ssh-keygen${type_opt}${bits_opt}${filename_opt}${passphrase_opt}${comment_opt}${options_opt}",
+    command => join($command, ' '),
     user    => $_user,
     creates => $_filename,
   }
