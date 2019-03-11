@@ -2,7 +2,7 @@
 # Parameters:
 # $ensure
 # $generate
-# $export
+# $export_key
 # $collect
 # $user
 # $type
@@ -16,7 +16,7 @@
 define ssh_keygen::ssh_key (
   $ensure        = present,
   $generate      = true,
-  $export        = true,
+  $export_key    = true,
   $export_suffix = undef,
   $collect       = undef,
   $user          = undef,
@@ -58,7 +58,7 @@ define ssh_keygen::ssh_key (
 
   if $::settings::storeconfigs {
     # If we have made the ssh key yet - this takes one puppet run to show up
-    if $export and getvar("::${user_real}_ssh${type_real}key") {
+    if $export_key and getvar("::${user_real}_ssh${type_real}key") {
       $key_comment = getvar("::${user_real}_ssh${type_real}key_comment")
       @@ssh_authorized_key { "${key_comment}${export_suffix}":
         ensure  => $ensure,
