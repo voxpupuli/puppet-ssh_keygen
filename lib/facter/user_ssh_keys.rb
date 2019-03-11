@@ -12,8 +12,8 @@
 #   We need the pub key details for export to other nodes
 
 def login_users
-  Puppet::Type.type('user').instances.find_all do |user|
-    %w(root puppet jenkins).include?(user.name) ||
+  Puppet::Type.type('user').instances.select do |user|
+    %w[root puppet jenkins].include?(user.name) ||
       user.retrieve[user.property(:uid)].to_i >= 500
   end
 end
@@ -21,7 +21,7 @@ end
 def add_facts_for_user(user)
   sshdir = File.join(user.retrieve[user.property(:home)], '.ssh')
 
-  %w(rsa dsa).each do |keytype|
+  %w[rsa dsa].each do |keytype|
     pubpath = File.join(sshdir, "id_#{keytype}.pub")
 
     next unless File.file?(pubpath)
