@@ -4,7 +4,23 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v3.0.1](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v3.0.1) (2018-09-07)
+## [v4.0.0](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v4.0.0) (2019-04-28)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v3.0.1...v4.0.0)
+
+**Breaking changes:**
+
+- modulesync 2.6.0 & drop Puppet 4 [\#47](https://github.com/voxpupuli/puppet-ssh_keygen/pull/47) ([bastelfreak](https://github.com/bastelfreak))
+
+**Closed issues:**
+
+- ssh\_keygen fails when using ed25519 [\#30](https://github.com/voxpupuli/puppet-ssh_keygen/issues/30)
+
+**Merged pull requests:**
+
+- modulesync 2.2.0 and allow puppet 6.x [\#44](https://github.com/voxpupuli/puppet-ssh_keygen/pull/44) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v3.0.1](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v3.0.1) (2018-09-09)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v3.0.0...v3.0.1)
 
