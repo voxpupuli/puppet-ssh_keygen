@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.1.0](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v4.1.0) (2020-04-03)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v4.0.0...v4.1.0)
+
+**Merged pull requests:**
+
+- Allow puppetlabs/stdlib 6.x [\#54](https://github.com/voxpupuli/puppet-ssh_keygen/pull/54) ([dhoppe](https://github.com/dhoppe))
+
 ## [v4.0.0](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v4.0.0) (2019-04-28)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v3.0.1...v4.0.0)
