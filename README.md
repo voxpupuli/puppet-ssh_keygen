@@ -8,19 +8,22 @@
 [![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/ssh_keygen.svg)](https://forge.puppetlabs.com/puppet/ssh_keygen)
 [![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/ssh_keygen.svg)](https://forge.puppetlabs.com/puppet/ssh_keygen)
 
-#### Table of Contents
+## Table of Contents
 
 1. [Usage - Configuration options and additional functionality](#usage)
-2. [Development - Guide for contributing to the module](#development)
+1. [Development - Guide for contributing to the module](#development)
 
-# Usage
+## Usage
 
-Generate ssh keys for any user using ssh_keygen, that needs exist before using the module
+Generate ssh keys for any user using ssh_keygen, that needs exist before using
+the module
+
 ```puppet
 ssh_keygen { 'john': }
 ```
 
 or if not using the default `/home/john`
+
 ```puppet
 ssh_keygen { 'john':
   home => '/var/home'
@@ -28,6 +31,7 @@ ssh_keygen { 'john':
 ```
 
 the key comment can also be overriden with
+
 ```puppet
 ssh_keygen { 'john':
   comment => 'john key'
@@ -35,6 +39,7 @@ ssh_keygen { 'john':
 ```
 
 Generate a dsa key
+
 ```puppet
 ssh_keygen { 'john':
   type => 'dsa'
@@ -42,6 +47,7 @@ ssh_keygen { 'john':
 ```
 
 specify the bit length
+
 ```puppet
 ssh_keygen { 'john':
   bits => 4096
@@ -49,6 +55,7 @@ ssh_keygen { 'john':
 ```
 
 Generate new host key
+
 ```puppet
 ssh_keygen { 'root':
   filename => '/etc/ssh/ssh_host_rsa_key'
