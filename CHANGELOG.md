@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.0.0](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v5.0.0) (2021-06-15)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v4.1.0...v5.0.0)
+
+**Breaking changes:**
+
+- Drop EoL Puppet 5 support; Add Puppet 7 support [\#64](https://github.com/voxpupuli/puppet-ssh_keygen/pull/64) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- puppetlabs/stdlib: Allow 7.x [\#62](https://github.com/voxpupuli/puppet-ssh_keygen/pull/62) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- Fix several markdown lint issues [\#58](https://github.com/voxpupuli/puppet-ssh_keygen/pull/58) ([dhoppe](https://github.com/dhoppe))
+- Use voxpupuli-acceptance [\#57](https://github.com/voxpupuli/puppet-ssh_keygen/pull/57) ([ekohl](https://github.com/ekohl))
+
 ## [v4.1.0](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v4.1.0) (2020-04-03)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v4.0.0...v4.1.0)
