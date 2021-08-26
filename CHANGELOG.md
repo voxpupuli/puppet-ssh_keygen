@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.0.1](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v5.0.1) (2021-08-26)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v5.0.0...v5.0.1)
+
+**Merged pull requests:**
+
+- Allow stdlib 8.0.0 [\#66](https://github.com/voxpupuli/puppet-ssh_keygen/pull/66) ([smortex](https://github.com/smortex))
+
 ## [v5.0.0](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v5.0.0) (2021-06-15)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v4.1.0...v5.0.0)
