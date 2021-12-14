@@ -1,7 +1,7 @@
 ---
-Gemfile:
-  optional:
-    ':test':
-      - gem: puppet-lint-param-docs
+.puppet-lint.rc:
+  enabled_lint_checks:
+    - parameter_documentation
+    - parameter_types
 spec/spec_helper_acceptance.rb:
   unmanaged: false
