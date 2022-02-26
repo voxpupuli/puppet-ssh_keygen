@@ -4,7 +4,7 @@
   "author": "Vox Pupuli",
   "summary": "Generate ssh keys with ssh_keygen",
   "license": "Apache-2.0",
-  "source": "http://github.com/voxpupuli/puppet-ssh_keygen.git",
+  "source": "https://github.com/voxpupuli/puppet-ssh_keygen.git",
   "description": "Generate ssh keys for any user using ssh_keygen, that needs to be present before using the module",
   "project_page": "http://github.com/voxpupuli/puppet-ssh_keygen",
   "requirements": [
