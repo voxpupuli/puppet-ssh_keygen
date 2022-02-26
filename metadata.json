@@ -1,6 +1,6 @@
 {
   "name": "puppet-ssh_keygen",
-  "version": "5.0.2",
+  "version": "5.0.3-rc0",
   "author": "Vox Pupuli",
   "summary": "Generate ssh keys with ssh_keygen",
   "license": "Apache-2.0",
