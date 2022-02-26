@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.0.2](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v5.0.2) (2022-02-26)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v5.0.1...v5.0.2)
+
+**Merged pull requests:**
+
+- metadata.json: use HTTPS for git URL & cleanup README.md [\#74](https://github.com/voxpupuli/puppet-ssh_keygen/pull/74) ([bastelfreak](https://github.com/bastelfreak))
+- cleanup .sync.yml an add puppet-lint-param-docs [\#69](https://github.com/voxpupuli/puppet-ssh_keygen/pull/69) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v5.0.1](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v5.0.1) (2021-08-26)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v5.0.0...v5.0.1)
