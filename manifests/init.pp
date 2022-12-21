@@ -87,7 +87,8 @@ define ssh_keygen (
     default => shell_join($options),
   }
 
-  $command = delete_undef_values( [
+  $command = delete_undef_values(
+    [
       'ssh-keygen',
       $type_opt,
       $bits_opt,
