@@ -44,23 +44,23 @@ ssh_keygen { 'root':
 
 The following parameters are available in the `ssh_keygen` defined type:
 
-* [`user`](#user)
-* [`type`](#type)
-* [`bits`](#bits)
-* [`home`](#home)
-* [`filename`](#filename)
-* [`comment`](#comment)
-* [`options`](#options)
+* [`user`](#-ssh_keygen--user)
+* [`type`](#-ssh_keygen--type)
+* [`bits`](#-ssh_keygen--bits)
+* [`home`](#-ssh_keygen--home)
+* [`filename`](#-ssh_keygen--filename)
+* [`comment`](#-ssh_keygen--comment)
+* [`options`](#-ssh_keygen--options)
 
-##### <a name="user"></a>`user`
+##### <a name="-ssh_keygen--user"></a>`user`
 
 Data type: `Optional[String]`
 
 Username to create key for
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="type"></a>`type`
+##### <a name="-ssh_keygen--type"></a>`type`
 
 Data type: `Enum['rsa', 'dsa', 'ecdsa', 'ed25519', 'rsa1']`
 
@@ -68,43 +68,43 @@ Type of key to create
 
 Default value: `'rsa'`
 
-##### <a name="bits"></a>`bits`
+##### <a name="-ssh_keygen--bits"></a>`bits`
 
 Data type: `Optional[Integer]`
 
 Number of bits in key
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="home"></a>`home`
+##### <a name="-ssh_keygen--home"></a>`home`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
 Home directory for user
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="filename"></a>`filename`
+##### <a name="-ssh_keygen--filename"></a>`filename`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
 Key filename
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="comment"></a>`comment`
+##### <a name="-ssh_keygen--comment"></a>`comment`
 
 Data type: `Optional[String]`
 
 Key comment
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="options"></a>`options`
+##### <a name="-ssh_keygen--options"></a>`options`
 
 Data type: `Optional[Array[String]]`
 
 Additional options to pass on to ssh-keygen
 
-Default value: ``undef``
+Default value: `undef`
 
