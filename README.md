@@ -63,6 +63,15 @@ ssh_keygen { 'root':
 }
 ```
 
+Overwrite an exsiting key
+
+```puppet
+ssh_keygen { 'root':
+  filename => '/etc/ssh/ssh_host_rsa_key'
+  force    => true,
+}
+```
+
 ## Development
 
 This module is maintained by [Vox Pupuli](https://voxpupuli.org/). Voxpupuli
