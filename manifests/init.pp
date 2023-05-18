@@ -37,6 +37,7 @@
 # @param filename Key filename
 # @param comment Key comment
 # @param options Additional options to pass on to ssh-keygen
+# @param force Force-overwrite any existing SSH key.
 #
 define ssh_keygen (
   Optional[String] $user     = undef,
@@ -46,6 +47,7 @@ define ssh_keygen (
   Optional[Stdlib::Absolutepath] $filename = undef,
   Optional[String] $comment  = undef,
   Optional[Array[String]] $options  = undef,
+  Optional[Boolean] $force         = false,
 ) {
   Exec { path => '/bin:/usr/bin' }
 
@@ -87,8 +89,7 @@ define ssh_keygen (
     default => shell_join($options),
   }
 
-  $command = delete_undef_values(
-    [
+  $command = delete_undef_values( [
       'ssh-keygen',
       $type_opt,
       $bits_opt,
@@ -99,9 +100,18 @@ define ssh_keygen (
     ]
   )
 
-  exec { "ssh_keygen-${name}":
-    command => join($command, ' '),
-    user    => $_user,
-    creates => $_filename,
+  if $force {
+    # Direct IN a "y" to accept the Overwrite? prompt from ssh-keygen.
+    exec { "ssh_keygen-${name}":
+      command => "${join($command, ' ')} <<<y",
+      user    => $_user,
+    }
+  } else 
+  {
+    exec { "ssh_keygen-${name}":
+      command => join($command, ' '),
+      user    => $_user,
+      creates => $_filename,
+    }
   }
 }

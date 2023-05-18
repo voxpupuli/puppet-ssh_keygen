@@ -122,7 +122,18 @@ describe 'ssh_keygen' do
       expect(subject).to contain_exec('ssh_keygen-john').with(
         command: "ssh-keygen -t rsa -f /home/john/.ssh/id_rsa -N '' -q",
         user: 'john',
-        creates: '/home/john/.ssh/id_rsa'
+        creates: '/home/john/.ssh/id_rsa',
+      )
+    }
+  end
+
+  context 'overwrite existing key' do
+    let(:params) { { force: true } } 
+
+    it {
+      expect(subject).to contain_exec('ssh_keygen-john').with(
+        command: "ssh-keygen -t rsa -f /home/john/.ssh/id_rsa -N '' <<<y",
+        user: 'john',
       )
     }
   end
