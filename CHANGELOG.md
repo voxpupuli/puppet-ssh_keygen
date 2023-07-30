@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v6.0.0](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v6.0.0) (2023-07-30)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v5.0.2...v6.0.0)
+
+**Breaking changes:**
+
+- Drop Puppet 6 support [\#80](https://github.com/voxpupuli/puppet-ssh_keygen/pull/80) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add Puppet 8 support [\#86](https://github.com/voxpupuli/puppet-ssh_keygen/pull/86) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/stdlib: Allow 9.x [\#85](https://github.com/voxpupuli/puppet-ssh_keygen/pull/85) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- Remove old nodesets [\#76](https://github.com/voxpupuli/puppet-ssh_keygen/pull/76) ([ekohl](https://github.com/ekohl))
+
 ## [v5.0.2](https://github.com/voxpupuli/puppet-ssh_keygen/tree/v5.0.2) (2022-02-26)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-ssh_keygen/compare/v5.0.1...v5.0.2)
