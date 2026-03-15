@@ -13,7 +13,7 @@ describe 'ssh_keygen' do
       expect(subject).to contain_exec('ssh_keygen-john').with(
         command: "ssh-keygen -t rsa -f /home/john/.ssh/id_rsa -N ''",
         user: 'john',
-        creates: '/home/john/.ssh/id_rsa'
+        creates: '/home/john/.ssh/id_rsa',
       )
     }
   end
@@ -25,7 +25,7 @@ describe 'ssh_keygen' do
       expect(subject).to contain_exec('ssh_keygen-john').with(
         command: "ssh-keygen -t rsa -f /home/other/.ssh/id_rsa -N ''",
         user: 'other',
-        creates: '/home/other/.ssh/id_rsa'
+        creates: '/home/other/.ssh/id_rsa',
       )
     }
   end
@@ -37,7 +37,7 @@ describe 'ssh_keygen' do
       expect(subject).to contain_exec('ssh_keygen-john').with(
         command: "ssh-keygen -t rsa -f /home/john/.ssh/id_rsa -N '' \\; rm -rf /",
         user: 'john',
-        creates: '/home/john/.ssh/id_rsa'
+        creates: '/home/john/.ssh/id_rsa',
       )
     }
   end
@@ -49,7 +49,7 @@ describe 'ssh_keygen' do
       expect(subject).to contain_exec('ssh_keygen-john').with(
         command: "ssh-keygen -t rsa -f /root/.ssh/id_rsa -N ''",
         user: 'root',
-        creates: '/root/.ssh/id_rsa'
+        creates: '/root/.ssh/id_rsa',
       )
     }
   end
@@ -61,7 +61,7 @@ describe 'ssh_keygen' do
       expect(subject).to contain_exec('ssh_keygen-john').with(
         command: "ssh-keygen -t dsa -f /home/john/.ssh/id_dsa -N ''",
         user: 'john',
-        creates: '/home/john/.ssh/id_dsa'
+        creates: '/home/john/.ssh/id_dsa',
       )
     }
   end
@@ -73,7 +73,7 @@ describe 'ssh_keygen' do
       expect(subject).to contain_exec('ssh_keygen-john').with(
         command: "ssh-keygen -t rsa -b 4096 -f /home/john/.ssh/id_rsa -N ''",
         user: 'john',
-        creates: '/home/john/.ssh/id_rsa'
+        creates: '/home/john/.ssh/id_rsa',
       )
     }
   end
@@ -85,7 +85,7 @@ describe 'ssh_keygen' do
       expect(subject).to contain_exec('ssh_keygen-john').with(
         command: "ssh-keygen -t rsa -f /h/j/.ssh/id_rsa -N ''",
         user: 'john',
-        creates: '/h/j/.ssh/id_rsa'
+        creates: '/h/j/.ssh/id_rsa',
       )
     }
   end
@@ -98,7 +98,7 @@ describe 'ssh_keygen' do
       expect(subject).to contain_exec('ssh_keygen-root').with(
         command: "ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''",
         user: 'root',
-        creates: '/etc/ssh/ssh_host_rsa_key'
+        creates: '/etc/ssh/ssh_host_rsa_key',
       )
     }
   end
@@ -110,7 +110,7 @@ describe 'ssh_keygen' do
       expect(subject).to contain_exec('ssh_keygen-john').with(
         command: "ssh-keygen -t rsa -f /home/john/.ssh/id_rsa -N '' -C my\\ key",
         user: 'john',
-        creates: '/home/john/.ssh/id_rsa'
+        creates: '/home/john/.ssh/id_rsa',
       )
     }
   end
@@ -122,7 +122,7 @@ describe 'ssh_keygen' do
       expect(subject).to contain_exec('ssh_keygen-john').with(
         command: "ssh-keygen -t rsa -f /home/john/.ssh/id_rsa -N '' -q",
         user: 'john',
-        creates: '/home/john/.ssh/id_rsa'
+        creates: '/home/john/.ssh/id_rsa',
       )
     }
   end
