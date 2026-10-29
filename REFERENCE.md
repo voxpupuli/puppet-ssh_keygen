@@ -107,4 +107,3 @@ Data type: `Optional[Array[String]]`
 Additional options to pass on to ssh-keygen
 
 Default value: `undef`
-
